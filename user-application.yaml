@@ -1,0 +1,101 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: user-service
+  profiles:
+    active: local
+eureka:
+   client:
+      serviceUrl:
+         defaultZone: http://localhost:8761/eureka
+      instance:
+         preferIpAddress: true
+---
+spring:
+  profiles: local | dev
+datasource:
+  user:
+    url: jdbc:mysql://localhost:3306/get_better_tool
+    initialize: true
+    username: root
+    password: root
+    driverClassName: com.mysql.cj.jdbc.Driver
+    maxIdle: 10
+    minIdle: 0
+    maxActive: 10
+    maxWait: 2000
+    initialSize: 2
+    testWhileIdle: true
+    validationQuery: SELECT 1
+    minEvictableIdleTimeMillis: 900000
+feign:
+  clients:
+    configs: http://localhost:8081/config
+    teams: http://localhost:8083/teams
+---
+spring:
+  profiles: prod
+datasource:
+  user:
+    url: jdbc:mysql://localhost:3306/GetBetterTool
+    initialize: true
+    username: root
+    password: tX@T$Gszb1bR
+    driver-class-name: com.mysql.jdbc.Driver
+    maxIdle: 10
+    minIdle: 0
+    maxActive: 10
+    maxWait: 2000
+    initialSize: 2
+    testWhileIdle: true
+    validationQuery: SELECT 1
+    minEvictableIdleTimeMillis: 900000
+feign:
+  clients:
+    configs: http://localhost:8081/config
+    teams: http://localhost:8083/teams
+---
+spring:
+  profiles: anil
+datasource:
+  user:
+    url: jdbc:mysql://localhost:3306/get_better_tool
+    initialize: true
+    username: root
+    password: anilkumar
+    driverClassName: com.mysql.cj.jdbc.Driver
+    maxIdle: 10
+    minIdle: 0
+    maxActive: 10
+    maxWait: 2000
+    initialSize: 2
+    testWhileIdle: true
+    validationQuery: SELECT 1
+    minEvictableIdleTimeMillis: 900000
+feign:
+  clients:
+    configs: http://localhost:8081/config
+    teams: http://localhost:8083/teams
+---
+spring:
+  profiles: sandeepa
+datasource:
+  user:
+    url: jdbc:mysql://localhost:3306/employee_tables
+    initialize: true
+    username: root
+    password: root
+    driverClassName: com.mysql.cj.jdbc.Driver
+    maxIdle: 10
+    minIdle: 0
+    maxActive: 10
+    maxWait: 2000
+    initialSize: 2
+    testWhileIdle: true
+    validationQuery: SELECT 1
+    minEvictableIdleTimeMillis: 900000
+feign:
+  clients:
+    configs: http://localhost:8081/config
+    teams: http://localhost:8083/teams
